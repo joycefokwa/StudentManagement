@@ -1,0 +1,46 @@
+﻿@model StudentManagment.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Student</h2>
+@if(ViewBag.ErrorMessage !=null)
+   {
+     <div class="alert alert-danger">
+         @ViewBag.ErrorMessage
+     </div>
+   }
+
+@using (Html.BeginForm("Create", "Student", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+
+        <div>
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name,
+                new { @class = "form-control" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email,
+                new { @class = "form-control" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Age)
+            @Html.TextBoxFor(model => model.Age,
+                new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+}
